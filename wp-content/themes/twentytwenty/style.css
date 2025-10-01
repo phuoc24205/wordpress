@@ -4232,6 +4232,7 @@ div.comment:first-of-type {
 	color: #ffffff !important;
 	text-decoration: none !important;
 	transform: translateX(5px);
+	font-weight: 600;
 	/* thay vì margin-left */
 }
 
