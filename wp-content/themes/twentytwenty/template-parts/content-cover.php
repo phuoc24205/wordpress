@@ -9,7 +9,7 @@
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('danh-sach'); ?> id="post-<?php the_ID(); ?>">
 	<?php
 	// On the cover page template, output the cover header.
 	$cover_header_style   = '';
@@ -63,6 +63,9 @@
 							 */
 							$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
 
+							
+
+							the_title( '<h1 class="entry-title">', '</h1>' );
 							if ( true === $show_categories && has_category() ) {
 								?>
 
@@ -80,8 +83,6 @@
 
 								<?php
 							}
-
-							the_title( '<h1 class="entry-title">', '</h1>' );
 
 							if ( is_page() ) {
 								?>
