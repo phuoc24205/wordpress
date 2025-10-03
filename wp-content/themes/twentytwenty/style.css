@@ -6595,9 +6595,8 @@ ul.footer-social li a i {
 	}
 }
 
-/* Bố cục 2 cột */
 .danh-sach {
-	margin: 1rem 0;
+	margin: 1rem 1rem;
 	padding: 1rem !important;
 	display: flex;
 	flex-direction: row;
@@ -6609,10 +6608,9 @@ ul.footer-social li a i {
 	background: #fff;
 	border-radius: 10px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-	width: 50vw;
+	width: 500px;
 }
 
-/* Cột trái: hình */
 .danh-sach .post-left {
 	flex: 0 0 35%;
 	border-radius: 8px;
@@ -6646,12 +6644,26 @@ ul.footer-social li a i {
 .danh-sach .header {
 	display: flex;
 	gap: 20px;
-	align-items: center;
+	padding: 0 1rem;
+	align-items: start;
+	justify-content: start;
+}
+
+.danh-sach .entry-header {
+	padding: 0 2rem;
+	border-left: #000 solid 1px;
+	width: 65%;
+	height: 150px;
+	flex: 1;
+
 }
 
 .danh-sach .entry-header h2.entry-title a {
-	color: #222;
+	color: #0056d2;
+	text-transform: uppercase !important;
 	text-decoration: none;
+	text-overflow: ellipsis;
+	white-space: inherit;
 }
 
 .danh-sach .entry-header h2.entry-title a:hover {
@@ -6675,10 +6687,15 @@ ul.footer-social li a i {
 	color: #444;
 	line-height: 1.6;
 	margin: 0;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	overflow: hidden;
 }
 
 .danh-sach .entry-content p {
 	max-width: 100% !important;
+	margin: 0;
 }
 
 /* Responsive: mobile về 1 cột */
@@ -6696,15 +6713,16 @@ ul.footer-social li a i {
 .danh-sach .post-date {
 	display: flex;
 	align-items: center;
+	flex-direction: column;
 	margin-bottom: 0;
 	font-family: 'Arial', sans-serif;
 }
 
 /* Ngày (số) */
 .danh-sach .post-date .day {
-	font-size: 36px;
-	font-weight: bold;
-	color: #0073e6;
+	font-size: 42px;
+	font-weight: 400;
+	color: black;
 	/* xanh */
 	margin-right: 8px;
 	line-height: 1;
@@ -6721,7 +6739,7 @@ ul.footer-social li a i {
 .danh-sach .post-date .month-year .month {
 	font-size: 14px;
 	font-weight: 600;
-	color: #444;
+	color: #444 !important;
 }
 
 .danh-sach .post-date .month-year .year {
