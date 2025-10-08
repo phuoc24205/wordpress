@@ -2362,7 +2362,7 @@ body.template-full-width [class*="wp-block"].alignfull:not(.has-background) [cla
 /* Archive Header ---------------------------- */
 
 .archive-header {
-	background-color: #fff;
+	background-color: #fff !important;
 	padding: 4rem 0;
 }
 

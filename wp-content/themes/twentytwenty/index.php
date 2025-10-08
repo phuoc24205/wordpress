@@ -32,7 +32,7 @@ get_header();
 
 		$archive_title = sprintf(
 			'%1$s %2$s',
-			'<span class="color-accent">' . __( 'Search:', 'twentytwenty' ) . '</span>',
+			'<span class="color-red">' . __( 'Search:', 'twentytwenty' ) . '</span>',
 			'&ldquo;' . get_search_query() . '&rdquo;'
 		);
 
@@ -82,7 +82,7 @@ get_header();
 	if ( have_posts() ) {
 
 		$i = 0;
-
+		echo '<div class="container-md section-inner">';
 		while ( have_posts() ) {
 			++$i;
 			// if ( $i > 1 ) {
@@ -93,6 +93,7 @@ get_header();
 			get_template_part( 'template-parts/content', get_post_type() );
 
 		}
+		echo '</div>';
 	} elseif ( is_search() ) {
 		?>
 

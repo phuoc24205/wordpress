@@ -156,6 +156,10 @@ body {
 }
 
 #site-content {
+	max-width: 168rem;
+	padding: 3.15rem 0;
+	align-items: center;
+	margin: 0 auto;
 	overflow: hidden;
 }
 
@@ -1100,6 +1104,12 @@ button.toggle {
 
 /* COLOR */
 
+.color-red,
+.color-red-hover:focus,
+.color-red-hover:hover {
+	color: red;
+}
+
 .color-accent,
 .color-accent-hover:focus,
 .color-accent-hover:hover {
@@ -1270,6 +1280,38 @@ button.toggle {
 }
 
 /* Search Form ------------------------------- */
+.search-form-input {
+	position: relative;
+}
+
+.search-form-input .search-field {
+	width: 100%;
+	padding: 20px 45px;
+}
+
+.search-form-input .search-submit {
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 12px 6px;
+	color: white;
+	background-color: #009970;
+	border-radius: 10px;
+}
+
+.search-form-input i {
+	font-size: 20px;
+	position: absolute;
+	left: 9px;
+	top: 50%;
+	transform: translateY(-50%);
+}
 
 .search-form {
 	align-items: stretch;
@@ -1278,10 +1320,10 @@ button.toggle {
 	margin: 0 0 -0.8rem -0.8rem;
 }
 
-.search-form .search-field,
+/* .search-form .search-field,
 .search-form .search-submit {
 	margin: 0 0 0.8rem 0.8rem;
-}
+} */
 
 .search-form label {
 	align-items: stretch;
@@ -1369,17 +1411,21 @@ ul.social-icons li a:hover {
 
 
 #site-header {
-	background: #fff;
+	background: #F8F8F8 !important;
 	position: relative;
+	min-height: 1rem;
 }
 
 .header-inner {
 	max-width: 168rem;
-	padding: 3.15rem 0;
 	z-index: 100;
 }
 
 /* Header Titles ----------------------------- */
+.header-left {
+	display: flex;
+	align-items: center;
+}
 
 .header-titles-wrapper {
 	align-items: center;
@@ -1387,6 +1433,7 @@ ul.social-icons li a:hover {
 	justify-content: center;
 	padding: 0 4rem;
 	text-align: center;
+	height: 100%;
 }
 
 body:not(.enable-search-modal) .header-titles-wrapper {
@@ -1411,6 +1458,7 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 	color: inherit;
 	display: block;
 	text-decoration: none;
+	color: #A3A4A6 !important;
 }
 
 .site-title a:hover,
@@ -1484,10 +1532,26 @@ body:not(.enable-search-modal) .site-logo img {
 	}
 }
 
-/* Header Navigation ------------------------- */
 
-.header-navigation-wrapper {
-	display: none;
+/* Keep the primary menu items on a single horizontal row and allow horizontal scrolling when needed */
+.primary-menu-wrapper .primary-menu {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 1rem;
+}
+
+.primary-menu-wrapper .primary-menu li {
+	white-space: nowrap;
+}
+
+.primary-menu-icons {
+	flex: 0 0 auto;
+	/* keep icon menu width fixed and prevent it from shrinking */
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 /* Header Toggles ---------------------------- */
@@ -1735,6 +1799,7 @@ ul.primary-menu {
 
 .primary-menu ul li.menu-item-has-children>a {
 	padding-right: 4.5rem;
+
 }
 
 .primary-menu ul li.menu-item-has-children .icon {
@@ -2380,7 +2445,7 @@ body.template-full-width [class*="wp-block"].alignfull:not(.has-background) [cla
 /* Archive Header ---------------------------- */
 
 .archive-header {
-	background-color: #fff;
+	background-color: #fff !important;
 	padding: 4rem 0;
 }
 
@@ -2393,12 +2458,16 @@ body.template-full-width [class*="wp-block"].alignfull:not(.has-background) [cla
 	font-weight: 700;
 	letter-spacing: -0.026666667em;
 	margin: 0;
+	color: black !important;
 }
 
 .archive-subtitle p:last-child {
 	margin-bottom: 0;
 }
 
+.archive-subtitle p {
+	color: black;
+}
 
 /* Posts ------------------------------------- */
 
@@ -4985,9 +5054,7 @@ ul.footer-social li a i {
 
 	/* Site Header --------------------------- */
 
-	.header-inner {
-		padding: 3.8rem 0;
-	}
+	.header-inner {}
 
 	.site-title {
 		font-size: 2.4rem;
@@ -5791,7 +5858,6 @@ ul.footer-social li a i {
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
-		padding: 2.8rem 0;
 	}
 
 	.header-titles-wrapper {
@@ -6606,9 +6672,8 @@ ul.footer-social li a i {
 	margin-bottom: 30px;
 	padding: 20px;
 	background: #fff;
-	border-radius: 10px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-	width: 500px;
+	width: 100%;
 }
 
 .danh-sach .post-left {
@@ -6652,9 +6717,9 @@ ul.footer-social li a i {
 .danh-sach .entry-header {
 	padding: 0 2rem;
 	border-left: #000 solid 1px;
-	width: 65%;
 	height: 150px;
 	flex: 1;
+	background-color: white !important;
 
 }
 
@@ -6662,8 +6727,11 @@ ul.footer-social li a i {
 	color: #0056d2;
 	text-transform: uppercase !important;
 	text-decoration: none;
-	text-overflow: ellipsis;
-	white-space: inherit;
+	text-overflow: ellipsis !important;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline;
+	max-width: 80%;
 }
 
 .danh-sach .entry-header h2.entry-title a:hover {
@@ -6745,4 +6813,272 @@ ul.footer-social li a i {
 .danh-sach .post-date .month-year .year {
 	font-size: 12px;
 	color: #888;
+}
+
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	height: 100%;
+	/* khoảng cách giữa Home và Search */
+}
+
+.button-home {
+	background: #E7E7E7;
+	color: #A3A4A6;
+	border: none;
+	padding: 20px 12px;
+	border-radius: 4px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+.header-search-form {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.header-search-form {
+	display: flex;
+	align-items: center;
+	/* canh giữa dọc */
+	gap: 5px;
+	/* khoảng cách nếu muốn */
+}
+
+.header-search-form .search-field,
+.header-search-form .search-submit {
+	box-sizing: border-box;
+	padding: 6px 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	line-height: normal;
+	/* reset về bình thường */
+	font-size: 14px;
+	/* cùng cỡ chữ */
+	height: 36px;
+	/* ép chiều cao bằng nhau */
+}
+
+.header-search-form .search-submit {
+	background: #f7f7f7;
+	color: #A3A4A6;
+	cursor: pointer;
+	width: 40%;
+	font-weight: 500;
+}
+
+.header-search-form .search-submit:hover {
+	background: #e0e0e0;
+}
+
+.primary-menu-wrapper ul.primary-menu>li>a {
+	color: #A3A4A6 !important;
+	font-weight: 400 !important;
+}
+
+/* Primary menu icon row (Home / Search / Account) */
+.primary-menu-icons {
+	width: 100%;
+}
+
+.primary-menu-icons .icon-list {
+	display: flex;
+	gap: 1.6rem;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.primary-menu-icons .icon-link,
+.primary-menu-icons .toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	/* larger containers for bigger icons */
+	width: 5.2rem;
+	height: 5.2rem;
+	text-decoration: none;
+	color: inherit;
+	background: transparent;
+	border: 0;
+	padding: 0.6rem;
+	border-radius: 0.6rem;
+	box-sizing: border-box;
+}
+
+.primary-menu-icons .toggle .toggle-icon svg,
+.primary-menu-icons .icon-link svg {
+	width: 2.6rem !important;
+	height: 2.6rem !important;
+	display: block;
+}
+
+.primary-menu-icons .toggle-icon i.fa,
+.primary-menu-icons .toggle-icon i.fas,
+.primary-menu-icons .toggle-icon i.far,
+.primary-menu-icons .toggle-icon i.fab,
+.primary-menu-icons .toggle-icon i {
+	font-size: 2.6rem !important;
+	/* match SVG size */
+	line-height: 1 !important;
+	display: inline-block !important;
+	width: 2.6rem !important;
+	height: 2.6rem !important;
+	text-align: center;
+}
+
+/* ensure color inherits from parent */
+.primary-menu-icons .toggle-icon i,
+.primary-menu-icons .icon-link i {
+	color: inherit;
+}
+
+/* Set default icon color to black and label color to #747373 */
+.primary-menu-icons .toggle-icon i,
+.primary-menu-icons .icon-link i {
+	color: #000000 !important;
+}
+
+.primary-menu-icons .icon-text,
+.primary-menu-icons .toggle .icon-text {
+	color: #747373 !important;
+}
+
+/* Account item label should always be #747373 */
+.primary-menu-icons .icon-account .icon-text,
+.primary-menu-icons .icon-account .toggle .icon-text {
+	color: #747373 !important;
+}
+
+@media (max-width: 767px) {
+	.primary-menu-icons {
+		display: none;
+	}
+}
+
+.icon-list {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon-list .menu-item-icon {
+	text-align: center;
+}
+
+.icon-list .menu-item-icon i {
+	font-size: 24px;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.icon-menu-item a {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+}
+
+/* Make sure button toggles inside icon-menu-item stack icon above text like anchors */
+.icon-menu-item .toggle,
+.icon-menu-item .icon-link {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* match size used for icons (bigger) */
+	width: 5.2rem;
+	height: 5.2rem;
+	padding: 0.6rem;
+	box-sizing: border-box;
+	min-width: 0;
+	color: black;
+}
+
+/* Prevent global .header-inner .toggle padding from breaking icon layout */
+.primary-menu-icons .toggle {
+	padding: 0.6rem !important;
+}
+
+.icon-menu-item .icon-text,
+.icon-menu-item .toggle .icon-text {
+	display: block;
+	font-size: 1rem;
+	/* increased label size */
+	line-height: 1.1;
+	margin-top: 0.4rem;
+	color: #6d6d6d;
+	text-transform: none;
+}
+
+.icon-menu-item .toggle-icon,
+.icon-menu-item .icon-link .toggle-icon,
+.icon-menu-item .icon-link .toggle-icon svg {
+	display: block;
+}
+
+.primary-menu-icons .icon-list {
+	justify-content: center;
+	align-items: center;
+}
+
+.primary-menu-icons .icon-link:focus,
+.primary-menu-icons .icon-link:hover,
+.primary-menu-icons .toggle:focus,
+.primary-menu-icons .toggle:hover {
+	background-color: rgba(0, 0, 0, 0.03);
+	outline: none;
+}
+
+/* Bootstrap dropdown tweaks for header account */
+.primary-menu-icons .dropdown-toggle {
+	background: transparent;
+	border: 0;
+	padding: 0;
+}
+
+.primary-menu-icons .dropdown-toggle .toggle-icon,
+.primary-menu-icons .dropdown-toggle .icon-text {
+	display: block;
+}
+
+.primary-menu-icons .dropdown-menu {
+	min-width: 10rem;
+	padding: 0.25rem 0;
+}
+
+.primary-menu-icons .dropdown-menu .dropdown-item {
+	color: #333;
+}
+
+/* Neutralize global absolute positioning/size for nav/search toggles when used inside the icon row */
+.primary-menu-icons .nav-toggle,
+.primary-menu-icons .search-toggle {
+	position: static !important;
+	top: auto !important;
+	right: auto !important;
+	left: auto !important;
+	bottom: auto !important;
+	width: auto !important;
+}
+
+/* Force consistent SVG size for all icons in the icon row */
+.primary-menu-icons .toggle-icon svg,
+.primary-menu-icons .icon-link svg,
+.primary-menu-icons svg {
+	width: 2.2rem !important;
+	height: 2.2rem !important;
+	max-width: none !important;
+}
+
+/* Ensure the toggle inner text positioning doesn't overlap in this compact layout */
+.primary-menu-icons .toggle-inner .toggle-text {
+	position: static !important;
+	top: auto !important;
 }
