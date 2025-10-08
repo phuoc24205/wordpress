@@ -202,6 +202,12 @@ function twentytwenty_register_styles() {
 	// Enqueue the CSS file for the variable font, Inter.
 	wp_enqueue_style( 'twentytwenty-fonts', get_theme_file_uri( '/assets/css/font-inter.css' ), array(), $theme_version, 'all' );
 
+	// Load Font Awesome for icon fonts in header (CDN, free)
+	wp_enqueue_style( 'twentytwenty-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), '6.4.0' );
+
+	// Load Bootstrap CSS (CDN)
+	wp_enqueue_style( 'twentytwenty-bootstrap-css', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css', array(), '5.3.2' );
+
 	// Add output of Customizer settings as inline style.
 	$customizer_css = twentytwenty_get_customizer_css( 'front-end' );
 	if ( $customizer_css ) {
@@ -235,6 +241,10 @@ function twentytwenty_register_scripts() {
 	 */
 	wp_enqueue_script( 'twentytwenty-js', get_template_directory_uri() . '/assets/js/index.js', array(), $theme_version );
 	wp_script_add_data( 'twentytwenty-js', 'strategy', 'defer' );
+
+	// Enqueue Popper and Bootstrap JS for dropdowns (deferred)
+	wp_enqueue_script( 'twentytwenty-popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js', array(), '2.11.8', true );
+	wp_enqueue_script( 'twentytwenty-bootstrap-js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js', array( 'twentytwenty-popper' ), '5.3.2', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
@@ -289,6 +299,8 @@ function twentytwenty_menus() {
 		'mobile'   => __( 'Mobile Menu', 'twentytwenty' ),
 		'footer'   => __( 'Footer Menu', 'twentytwenty' ),
 		'social'   => __( 'Social Menu', 'twentytwenty' ),
+		'primary'   => __( 'Header Menu', 'twentytwenty' ),
+		'header_icon'=> __( 'Header Menu Icon', 'twentytwenty' ),
 	);
 
 	register_nav_menus( $locations );
@@ -350,7 +362,40 @@ function twentytwenty_get_custom_logo( $html ) {
 
 	return $html;
 }
+class TwentyTwenty_Icon_Menu_Walker extends Walker_Nav_Menu {
 
+    // Bắt đầu mỗi item <li>
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        $class_names = join( ' ', array_filter( $classes ) );
+
+        $output .= '<li class="icon-menu-item">';
+
+        $attributes  = ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
+
+        // lấy class icon (ví dụ fas fa-home)
+        $icon_class = '';
+        foreach ( $classes as $class ) {
+            if ( strpos( $class, 'fa' ) === 0 || strpos( $class, 'fas' ) === 0 || strpos( $class, 'far' ) === 0 || strpos( $class, 'fab' ) === 0 ) {
+                $icon_class = $class;
+            }
+        }
+
+        $item_output  = '<a' . $attributes . '>';
+        if ( $icon_class ) {
+            $item_output .= '<i class="' . esc_attr( $icon_class ) . '"></i>';
+        }
+        $item_output .= '<span class="menu-title">' . esc_html( $item->title ) . '</span>';
+        $item_output .= '</a>';
+
+        $output .= $item_output;
+    }
+
+    // Kết thúc mỗi item </li>
+    function end_el( &$output, $item, $depth = 0, $args = array() ) {
+        $output .= '</li>';
+    }
+}
 add_filter( 'get_custom_logo', 'twentytwenty_get_custom_logo' );
 
 if ( ! function_exists( 'wp_body_open' ) ) {
