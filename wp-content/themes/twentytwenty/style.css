@@ -1285,13 +1285,12 @@ button.toggle {
 }
 
 .search-form-input .search-field {
-	width: 100%;
-	padding: 20px 45px;
+	padding: 25px 100px 25px 50px;
 }
 
 .search-form-input .search-submit {
 	position: absolute;
-	right: 8px;
+	right: 20px;
 	top: 50%;
 	transform: translateY(-50%);
 	background: none;
@@ -1299,16 +1298,16 @@ button.toggle {
 	cursor: pointer;
 	font-size: 15px;
 	font-weight: 500;
-	padding: 12px 6px;
+	padding: 15px 10px;
 	color: white;
 	background-color: #009970;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 .search-form-input i {
 	font-size: 20px;
 	position: absolute;
-	left: 9px;
+	left: 20px;
 	top: 50%;
 	transform: translateY(-50%);
 }
