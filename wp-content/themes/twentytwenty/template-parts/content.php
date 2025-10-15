@@ -15,7 +15,7 @@
 
 <article <?php post_class('danh-sach'); ?> id="post-<?php the_ID(); ?>">
 
-
+    <?php if (!is_single()) : ?>
     <div class="post-right">
 
    <div class ="header">
@@ -44,6 +44,39 @@
         }
         ?>
     </div>
+    <?php else : ?>
+        <div class="post-single">
+        	<!-- Nếu đang ở trang chi tiết -->
+         <div class="post-title-row">
+         <?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+		<div class="circle-date">
+			<div class="left">
+				<div class="day"><?php echo get_the_date('d', $post->ID); ?></div>
+				<div class="month"><?php echo get_the_date('m', $post->ID); ?></div>
+			</div>
+			<div class="year"><?php echo get_the_date('y', $post->ID); ?></div>
+		</div>
+         </div>
+        <div class="line">
+        <div class="line-container">
+           <svg viewBox="0 0 800 60" preserveAspectRatio="none">
+            <polyline 
+                points="0,30 150,30 155,35 160,30 800,30" 
+                fill="none" 
+                stroke="#333" 
+                stroke-width="1"
+                stroke-linejoin="miter"
+            />
+            </svg>
+
+        </div>
+		<?php get_template_part('template-parts/featured-image'); ?>
+
+		<div class="entry-content">
+			<?php the_content(); ?>
+		</div>
+        </div>
+	<?php endif; ?>
     </header>
    </div>
 
