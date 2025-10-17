@@ -2789,6 +2789,7 @@ h2.entry-title {
 	display: flex;
 	font-weight: 600;
 	letter-spacing: -0.0275em;
+	font-size: 20px;
 	text-decoration: none;
 	flex: 1;
 }
@@ -7217,4 +7218,13 @@ ul.footer-social li a i {
 	gap: 30px;
 	color: black !important;
 	font-weight: 100 !important;
+}
+
+#comment-form {
+	padding: 0 !important;
+}
+
+#comment-form .text-right {
+	float: right !important;
+	margin-top: 10px;
 }
