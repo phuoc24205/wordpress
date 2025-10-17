@@ -2656,20 +2656,10 @@ h2.entry-title {
 
 .singular .featured-media-inner {
 	position: relative;
-	left: calc(50% - 50vw);
 	width: 100vw;
 }
 
-.singular .featured-media::before {
-	background: #fff;
-	content: "";
-	display: block;
-	position: absolute;
-	bottom: 50%;
-	left: 0;
-	right: 0;
-	top: 0;
-}
+
 
 .featured-media img {
 	margin: 0 auto;
@@ -2814,6 +2804,33 @@ h2.entry-title {
 .pagination-single a:focus .title,
 .pagination-single a:hover .title {
 	text-decoration: underline;
+}
+
+.pagination-single .post-date {
+	display: flex !;
+	align-items: center;
+	flex-direction: row !important;
+}
+
+.pagination-single .day-month {
+	font-weight: normal;
+	color: black !important;
+	font-size: 20px !important;
+	display: flex;
+	flex-direction: column;
+}
+
+.pagination-single .day {
+	color: black;
+	font-size: 20px !important;
+	border-bottom: 1px solid black;
+	padding-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.pagination-single .year {
+	color: black;
+	font-weight: normal;
 }
 
 .post-single {
@@ -5363,8 +5380,7 @@ ul.footer-social li a i {
 	}
 
 	.pagination-single-inner {
-		flex-direction: row;
-		justify-content: space-between;
+		flex-direction: column;
 	}
 
 	.pagination-single.only-next .pagination-single-inner {
@@ -5379,18 +5395,11 @@ ul.footer-social li a i {
 		margin: 4rem 0 0.8rem 0;
 	}
 
-	.pagination-single a+a {
-		margin: 0 0 0 4rem;
-	}
 
 	.pagination-single a .arrow {
 		margin: 0 2rem 0 0;
 	}
 
-	.pagination-single .next-post {
-		flex-direction: row-reverse;
-		text-align: right;
-	}
 
 	.pagination-single .next-post .arrow {
 		margin: 0 0 0 2rem;
@@ -7199,4 +7208,13 @@ ul.footer-social li a i {
 
 .post {
 	padding: 0 !important;
+}
+
+.next-post,
+.previous-post {
+	display: flex;
+	align-items: center !important;
+	gap: 30px;
+	color: black !important;
+	font-weight: 100 !important;
 }

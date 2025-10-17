@@ -54,6 +54,8 @@
         }
         ?>
     </div>
+    </header>
+    </div>
     <?php else : ?>
         <div class="post-single">
         	<!-- Nếu đang ở trang chi tiết -->
@@ -86,10 +88,26 @@
 			<?php the_content(); ?>
 		</div>
         </div>
-	<?php endif; ?>
-    </header>
+        <div class="section-inner">
+            <?php
+            wp_link_pages(array(/* ... */));
+            edit_post_link();
+            twentytwenty_the_post_meta(get_the_ID(), 'single-bottom');
+            if (post_type_supports(get_post_type(get_the_ID()), 'author') && is_single()) {
+                get_template_part('template-parts/entry-author-bio');
+            }
+            ?>
+        </div>
+        <?php
+        if (is_single()) {
+            get_template_part('template-parts/navigation');
+        }
+        if ((is_single() || is_page()) && (comments_open() || get_comments_number()) && !post_password_required()) {
+            ?>
+            <div class="comments-wrapper section-inner"><?php comments_template(); ?></div><?php
+        }
+        ?>
    </div>
 
-</div>
-
+<?php endif; ?>
 </article>

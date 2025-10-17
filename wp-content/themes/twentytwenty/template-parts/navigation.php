@@ -24,7 +24,6 @@ if ( $next_post || $prev_post ) {
 
 	<nav class="pagination-single section-inner<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Post', 'twentytwenty' ); ?>">
 
-		<hr class="styled-separator is-style-wide" aria-hidden="true" />
 
 		<div class="pagination-single-inner">
 
@@ -33,7 +32,13 @@ if ( $next_post || $prev_post ) {
 				?>
 
 				<a class="previous-post" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>">
-					<span class="arrow" aria-hidden="true">&larr;</span>
+					<div class="post-date">
+						<div class="day-month">
+							<span class="day"><?php echo get_the_date('d', $prev_post->ID); ?></span>
+							<span class="month"><?php echo date_i18n( 'm', strtotime( get_the_date('', $prev_post->ID) ) ); ?></span>
+						</div>
+						<span class="year"><?php echo get_the_date('y', $prev_post->ID); ?></span>
+					</div>
 					<span class="title"><span class="title-inner"><?php echo wp_kses_post( get_the_title( $prev_post->ID ) ); ?></span></span>
 				</a>
 
@@ -44,7 +49,13 @@ if ( $next_post || $prev_post ) {
 				?>
 
 				<a class="next-post" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>">
-					<span class="arrow" aria-hidden="true">&rarr;</span>
+					<div class="post-date">
+						<div class="day-month">
+							<span class="day"><?php echo get_the_date('d', $next_post->ID); ?></span>
+							<span class="month"><?php echo date_i18n( 'm', strtotime( get_the_date('', $next_post->ID) ) ); ?></span>
+						</div>
+						<span class="year"><?php echo get_the_date('y', $next_post->ID); ?></span>
+					</div>
 						<span class="title"><span class="title-inner"><?php echo wp_kses_post( get_the_title( $next_post->ID ) ); ?></span></span>
 				</a>
 				<?php
@@ -53,7 +64,6 @@ if ( $next_post || $prev_post ) {
 
 		</div><!-- .pagination-single-inner -->
 
-		<hr class="styled-separator is-style-wide" aria-hidden="true" />
 
 	</nav><!-- .pagination-single -->
 
