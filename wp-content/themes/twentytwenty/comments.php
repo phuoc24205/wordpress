@@ -30,7 +30,7 @@ if ( $comments ) {
 
 			<h2 class="comment-reply-title">
 			<?php
-			if ( ! have_comments() ) {
+			if ( ! have_comments()) {
 				_e( 'Leave a comment', 'twentytwenty' );
 			} elseif ( '1' === $comments_number ) {
 				/* translators: %s: Post title. */
