@@ -2851,6 +2851,153 @@ h2.entry-title {
 	font-size: 25px !important;
 }
 
+/* 3-Column Layout for Single Post */
+.post-layout-wrapper-3-col {
+	display: flex;
+	gap: 30px;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+/* Cột 1: Categories Sidebar (Bên trái) */
+.post-sidebar-categories {
+	flex: 0 0 250px;
+	max-width: 250px;
+}
+
+/* 1. CONTAINER CHUNG - Khối bao quanh */
+.all-categories-list-container {
+	/* Đảm bảo khối này không bị trôi nổi và chiếm đủ không gian */
+	width: fit-content;
+	clear: both;
+	margin: 20px 0; /* Khoảng cách trên dưới */
+	padding: 0; /* Loại bỏ padding để tiêu đề chiếm hết chiều rộng */
+	background-color: #ffffff;
+	border-radius: 8px;
+	overflow: hidden; /* Cần thiết để tiêu đề có nền họa tiết */
+	position: sticky;
+	top: 100px;
+}
+
+/* 2. TIÊU ĐỀ "Categories" */
+.categories-list-header {
+	font-size: 2.5rem; /* Kích thước chữ lớn hơn */
+	font-weight: 700; /* Chữ đậm */
+	color: #333333;
+	padding: 15px 20px; /* Padding bên trong */
+	margin: 0; /* Loại bỏ margin mặc định của h2 */
+	border-bottom: 1px solid #e0e0e0; /* Đường kẻ dưới tiêu đề */
+}
+
+/* 3. DANH SÁCH UL */
+.categories-list-ul {
+	list-style: none; /* Loại bỏ bullet mặc định */
+	padding: 0 20px 10px 20px; /* Padding: trên 0, hai bên 20px, dưới 10px */
+	margin: 0; /* Loại bỏ margin mặc định */
+}
+
+/* 4. CÁC MỤC DANH MỤC LI */
+.categories-list-ul li {
+	padding: 10px 0; /* Padding trên dưới cho mỗi mục */
+	margin: 0;
+	border-bottom: 1px solid #eeeeee; /* Đường kẻ ngang phân cách */
+	position: relative;
+}
+
+/* Loại bỏ đường kẻ ngang cho mục cuối cùng */
+.categories-list-ul li:last-child {
+	border-bottom: none;
+}
+
+/* 5. TẠO DẤU CHẤM VÀNG (Custom Bullet Point) */
+.categories-list-ul li a {
+	/* Đảm bảo liên kết nằm đúng vị trí */
+	display: block;
+	padding-left: 15px; /* Tạo không gian cho dấu chấm */
+	text-decoration: none;
+	color: #007bff; /* Màu liên kết */
+	transition: color 0.2s;
+}
+
+.categories-list-ul li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	/* Dấu chấm */
+	width: 6px;
+	height: 6px;
+	background-color: #ffc107; /* Màu vàng */
+	border-radius: 50%;
+}
+
+.categories-list-ul li a:hover {
+	color: #0056b3; /* Đổi màu khi di chuột */
+}
+
+.categories-list-ul .current-cat > a {
+	color: #0056b3;
+	font-weight: 600;
+}
+
+/* Cột 2: Content chính (Giữa) */
+.post-content-main {
+	flex: 1;
+	min-width: 0;
+}
+
+/* Cột 3: Next Post Sidebar (Bên phải) */
+.post-sidebar-next {
+	flex: 0 0 250px;
+	max-width: 250px;
+}
+
+.next-post-placeholder {
+	background: #f5f5f5;
+	padding: 20px;
+	border-radius: 8px;
+	position: sticky;
+	top: 100px;
+	min-height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Responsive cho tablet */
+@media (max-width: 1024px) {
+	.post-layout-wrapper-3-col {
+		flex-wrap: wrap;
+	}
+	
+	.post-sidebar-categories,
+	.post-sidebar-next {
+		flex: 0 0 100%;
+		max-width: 100%;
+		position: relative;
+	}
+	
+	.all-categories-list-container,
+	.next-post-placeholder {
+		position: relative;
+		top: 0;
+	}
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+	.post-layout-wrapper-3-col {
+		gap: 20px;
+		padding: 0 15px;
+	}
+	
+	.categories-list-header {
+		font-size: 18px;
+	}
+}
+
 .line-arrow {
 	position: relative;
 	width: 100%;
