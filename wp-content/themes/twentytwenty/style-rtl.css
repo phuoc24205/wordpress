@@ -5230,10 +5230,6 @@ a.to-the-top>* {
 		margin: 0 0 0 2rem;
 	}
 
-	.pagination-single .next-post {
-		flex-direction: row-reverse;
-		text-align: left;
-	}
 
 	.pagination-single .next-post .arrow {
 		margin: 0 2rem 0 0;
