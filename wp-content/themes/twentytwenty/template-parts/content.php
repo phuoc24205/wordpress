@@ -17,8 +17,18 @@
 
     <?php if (!is_single()) : ?>
     <div class="post-right">
-
    <div class ="header">
+        <?php
+     if ( is_search() ) {
+                ?>
+                <div class="custom-post-thumbnail">
+                    <?php
+                    the_post_thumbnail( 'thumbnail' );
+                    ?>
+                </div>
+                <?php
+            }
+            ?>
 	 <div class="post-date">
         <span class="day"><?php echo get_the_date('d'); ?></span>
         <div class="month-year">

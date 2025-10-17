@@ -6747,7 +6747,7 @@ ul.footer-social li a i {
 .danh-sach .header {
 	display: flex;
 	gap: 20px;
-	padding: 0 1rem;
+	padding: 1rem 1rem;
 	align-items: start;
 	justify-content: start;
 }
@@ -7152,6 +7152,11 @@ ul.footer-social li a i {
 	justify-content: space-between;
 	background-color: #f4f4f4;
 	border-bottom: 1px solid #bbb;
+}
+
+.custom-post-thumbnail img {
+	width: 250px;
+	height: 150px;
 }
 
 .circle-date {
