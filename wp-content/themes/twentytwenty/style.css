@@ -2871,37 +2871,50 @@ h2.entry-title {
 	/* Đảm bảo khối này không bị trôi nổi và chiếm đủ không gian */
 	width: fit-content;
 	clear: both;
-	margin: 20px 0; /* Khoảng cách trên dưới */
-	padding: 0; /* Loại bỏ padding để tiêu đề chiếm hết chiều rộng */
+	margin: 20px 0;
+	/* Khoảng cách trên dưới */
+	padding: 0;
+	/* Loại bỏ padding để tiêu đề chiếm hết chiều rộng */
 	background-color: #ffffff;
 	border-radius: 8px;
-	overflow: hidden; /* Cần thiết để tiêu đề có nền họa tiết */
+	overflow: hidden;
+	/* Cần thiết để tiêu đề có nền họa tiết */
 	position: sticky;
 	top: 100px;
 }
 
 /* 2. TIÊU ĐỀ "Categories" */
 .categories-list-header {
-	font-size: 2.5rem; /* Kích thước chữ lớn hơn */
-	font-weight: 700; /* Chữ đậm */
+	font-size: 2.5rem;
+	/* Kích thước chữ lớn hơn */
+	font-weight: 700;
+	/* Chữ đậm */
 	color: #333333;
-	padding: 15px 20px; /* Padding bên trong */
-	margin: 0; /* Loại bỏ margin mặc định của h2 */
-	border-bottom: 1px solid #e0e0e0; /* Đường kẻ dưới tiêu đề */
+	padding: 15px 20px;
+	/* Padding bên trong */
+	margin: 0;
+	/* Loại bỏ margin mặc định của h2 */
+	border-bottom: 1px solid #e0e0e0;
+	/* Đường kẻ dưới tiêu đề */
 }
 
 /* 3. DANH SÁCH UL */
 .categories-list-ul {
-	list-style: none; /* Loại bỏ bullet mặc định */
-	padding: 0 20px 10px 20px; /* Padding: trên 0, hai bên 20px, dưới 10px */
-	margin: 0; /* Loại bỏ margin mặc định */
+	list-style: none;
+	/* Loại bỏ bullet mặc định */
+	padding: 0 20px 10px 20px;
+	/* Padding: trên 0, hai bên 20px, dưới 10px */
+	margin: 0;
+	/* Loại bỏ margin mặc định */
 }
 
 /* 4. CÁC MỤC DANH MỤC LI */
 .categories-list-ul li {
-	padding: 10px 0; /* Padding trên dưới cho mỗi mục */
+	padding: 10px 0;
+	/* Padding trên dưới cho mỗi mục */
 	margin: 0;
-	border-bottom: 1px solid #eeeeee; /* Đường kẻ ngang phân cách */
+	border-bottom: 1px solid #eeeeee;
+	/* Đường kẻ ngang phân cách */
 	position: relative;
 }
 
@@ -2914,9 +2927,11 @@ h2.entry-title {
 .categories-list-ul li a {
 	/* Đảm bảo liên kết nằm đúng vị trí */
 	display: block;
-	padding-left: 15px; /* Tạo không gian cho dấu chấm */
+	padding-left: 15px;
+	/* Tạo không gian cho dấu chấm */
 	text-decoration: none;
-	color: #007bff; /* Màu liên kết */
+	color: #007bff;
+	/* Màu liên kết */
 	transition: color 0.2s;
 }
 
@@ -2929,15 +2944,17 @@ h2.entry-title {
 	/* Dấu chấm */
 	width: 6px;
 	height: 6px;
-	background-color: #ffc107; /* Màu vàng */
+	background-color: #ffc107;
+	/* Màu vàng */
 	border-radius: 50%;
 }
 
 .categories-list-ul li a:hover {
-	color: #0056b3; /* Đổi màu khi di chuột */
+	color: #0056b3;
+	/* Đổi màu khi di chuột */
 }
 
-.categories-list-ul .current-cat > a {
+.categories-list-ul .current-cat>a {
 	color: #0056b3;
 	font-weight: 600;
 }
@@ -2971,14 +2988,14 @@ h2.entry-title {
 	.post-layout-wrapper-3-col {
 		flex-wrap: wrap;
 	}
-	
+
 	.post-sidebar-categories,
 	.post-sidebar-next {
 		flex: 0 0 100%;
 		max-width: 100%;
 		position: relative;
 	}
-	
+
 	.all-categories-list-container,
 	.next-post-placeholder {
 		position: relative;
@@ -2992,7 +3009,7 @@ h2.entry-title {
 		gap: 20px;
 		padding: 0 15px;
 	}
-	
+
 	.categories-list-header {
 		font-size: 18px;
 	}
