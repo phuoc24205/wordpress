@@ -7719,3 +7719,237 @@ ul.footer-social li a i {
 	float: right !important;
 	margin-top: 10px;
 }
+
+/*----------------------------------------Archive----------------------------------------*/
+.custom-layout {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	gap: 20px;
+	align-items: start;
+}
+
+.col-center {
+	margin-top: 50px;
+}
+
+.col-left {
+	margin-top: 50px;
+}
+
+.custom-col.col-center>* {
+	max-width: 100%;
+	margin-left: 30px;
+	margin-right: auto;
+}
+
+.custom-col {
+	background: #fff;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.custom-post-wrap {
+	background: #f9f9f9;
+	border-radius: 10px;
+	padding: 15px;
+	transition: box-shadow 0.3s ease;
+}
+
+.custom-post-wrap:hover {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-post-thumbnail img {
+	width: 100%;
+	max-width: 200px;
+	height: auto;
+	border-radius: 10px;
+	display: block;
+	margin: 0 auto;
+}
+
+/*----------------------------------------Popular Posts----------------------------------------*/
+.custom-col.col-left .popular-posts {
+	padding: 15px;
+}
+
+.custom-col.col-left .popular-posts .section-title {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+.popular-posts .posts-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 20px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.popular-posts .post-item {
+	display: flex;
+	align-items: flex-start;
+	flex-basis: calc(50% - 10px);
+	box-sizing: border-box;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.popular-posts .post-item:nth-child(odd) {
+	border-right: 1px solid #f0f0f0;
+	padding-right: 30px;
+	margin-right: -10px;
+}
+
+.popular-posts .post-item .post-rank {
+	font-size: 3.5rem;
+	font-weight: 800;
+	color: #333;
+	margin-right: 10px;
+	line-height: 1;
+}
+
+.popular-posts .post-item .post-title {
+	flex-grow: 1;
+	font-size: 1.1rem;
+	font-weight: normal;
+}
+
+.popular-posts .post-item .post-title a {
+	text-decoration: none;
+	color: #000;
+	line-height: 1.4;
+	display: block;
+}
+
+.popular-posts .post-item .post-title a:hover {
+	color: #c00;
+}
+
+/*----------------------------------------Responsive----------------------------------------*/
+
+/* Khi màn hình nhỏ hơn 1024px → chuyển 3 cột thành 2 cột + 1 hàng xuống */
+@media (max-width: 1024px) {
+	.custom-layout {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"left center"
+			"right right";
+	}
+
+	.col-left {
+		grid-area: left;
+	}
+
+	.col-center {
+		grid-area: center;
+	}
+
+	.col-right {
+		grid-area: right;
+	}
+
+	.custom-col {
+		padding: 10px;
+	}
+}
+
+/* Khi nhỏ hơn 768px → chỉ còn 1 cột */
+@media (max-width: 767px) {
+	.custom-layout {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"left"
+			"center"
+			"right";
+	}
+
+	.col-left,
+	.col-center,
+	.col-right {
+		margin-top: 30px;
+	}
+
+	.popular-posts .post-item {
+		flex-basis: 100%;
+		margin-bottom: 15px;
+		padding-right: 0;
+		border-right: none;
+	}
+
+	.popular-posts .post-item .post-rank {
+		font-size: 2rem;
+	}
+
+	.popular-posts .post-item .post-title {
+		font-size: 1rem;
+	}
+
+	.custom-col {
+		padding: 8px;
+	}
+}
+
+/* Điện thoại rất nhỏ */
+@media (max-width: 480px) {
+	.popular-posts .post-item .post-rank {
+		font-size: 1.8rem;
+	}
+
+	.custom-col {
+		padding: 6px;
+	}
+}
+
+/*----------------------------------------end----------------------------------------*/
+/* comment tác giả  */
+.comments-box {
+	background: #fff;
+	padding: 15px 20px;
+	border-radius: 4px;
+}
+
+.comments-box-title {
+	font-size: 18px;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 5px;
+}
+
+.comments-box-line {
+	width: 50px;
+	border: 2px solid #6c7a89;
+	margin-bottom: 10px;
+}
+
+.comments-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.comments-list li {
+	padding: 6px 0;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.comments-list li:last-child {
+	border-bottom: none;
+}
+
+.comments-list a {
+	color: #3498db;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.comments-list a:hover {
+	text-decoration: underline;
+}
