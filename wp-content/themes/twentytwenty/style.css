@@ -4289,7 +4289,6 @@ figure.wp-block-table.is-style-stripes {
 /* CSS Test begin */
 .comment-box {
 	margin-top: 30px !important;
-	display: flex !important;
 }
 
 /* CSS Test end */
@@ -4319,8 +4318,6 @@ figure.wp-block-table.is-style-stripes {
 	padding: 7px 10px;
 	position: relative;
 	margin-bottom: -1px;
-	z-index: 1;
-	overflow: visible;
 }
 
 .comment-box .media-heading:before {
@@ -4334,22 +4331,59 @@ figure.wp-block-table.is-style-stripes {
 	transform: rotate(-45deg);
 	position: absolute;
 	top: 10px;
-	left: -7px;
-	z-index: 2;
+	left: -6px;
 }
 
-/* Additional layout styles for media components */
+/* Bootstrap-style Media Component */
+.media {
+	display: flex;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+
+.media:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.media-left {
+	float: left;
+	padding-right: 10px;
+}
+
+.media-body {
+	display: block;
+	overflow: hidden;
+	width: auto;
+}
+
+.media-body p {
+	margin: 0 0 10px;
+}
+
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.user-photo {
+	width: 50px;
+	height: 50px;
+	object-fit: cover;
+}
+
+/* Additional layout styles for comment-box */
 .comment-box .media-left {
 	float: left;
 	position: relative;
-	z-index: 0;
 }
 
 .comment-box .media-body {
 	overflow: visible;
 	position: relative;
-	z-index: 1;
-	width: 100%;
+	width: auto;
 }
 
 .comment-box .media-body p {
@@ -4358,7 +4392,23 @@ figure.wp-block-table.is-style-stripes {
 
 .comment-box .media {
 	margin-top: 15px;
+	display: block;
+	overflow: hidden;
+}
 
+/* Nested media (replies) */
+.comment-box .media-body .media {
+	margin-top: 15px;
+	padding-left: 0;
+}
+
+.comment-box .media-body .media .media-left {
+	width: 55px;
+}
+
+.comment-box .media-body .media img {
+	width: 45px;
+	height: 45px;
 }
 
 .comment-box .comment-reply {
@@ -4387,14 +4437,8 @@ figure.wp-block-table.is-style-stripes {
 	padding-left: 0;
 }
 
-/* Clear floats */
+/* Clear floats for comment box */
 .comment-box:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.media:after {
 	content: "";
 	display: table;
 	clear: both;
@@ -4403,12 +4447,144 @@ figure.wp-block-table.is-style-stripes {
 /* Responsive adjustments */
 @media (max-width: 768px) {
 	.comment-box .media-left {
-		width: 50px;
+		width: 55px;
+		padding-right: 8px;
 	}
 
 	.comment-box img {
 		width: 40px;
 		height: 40px;
+	}
+
+	.comment-box .media-heading {
+		font-size: 14px;
+		padding: 5px 8px;
+	}
+
+	.comment-box .media-body p {
+		font-size: 13px;
+		padding: 8px;
+	}
+
+	/* Nested comments responsive */
+	.comment-box .media-body .media .media-left {
+		width: 45px;
+	}
+
+	.comment-box .media-body .media img {
+		width: 35px;
+		height: 35px;
+	}
+}
+
+/* Latest Comments Widget (Sidebar) ----------------------------- */
+.latest-comments-widget {
+	padding: 20px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.latest-comments-widget .section-title {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ddd;
+}
+
+.styled-comment-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.styled-comment-item {
+	display: flex;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eee;
+}
+
+.styled-comment-item:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.comment-avatar-wrap {
+	flex-shrink: 0;
+	margin-right: 12px;
+}
+
+.comment-avatar-wrap img {
+	border-radius: 50%;
+	width: 55px;
+	height: 55px;
+}
+
+.comment-body-wrap {
+	flex: 1;
+}
+
+.comment-author-name {
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0 0 8px 0;
+	color: #333;
+}
+
+.comment-text-content {
+	font-size: 13px;
+	line-height: 1.6;
+	color: #666;
+	margin: 0;
+}
+
+/* Nested replies (children) */
+.styled-comment-list .children {
+	list-style: none;
+	margin: 15px 0 0 0;
+	padding-left: 20px;
+	border-left: 2px solid #eee;
+}
+
+.styled-comment-list .children .styled-comment-item {
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+
+.styled-comment-list .children .comment-avatar-wrap img {
+	width: 45px;
+	height: 45px;
+}
+
+.styled-comment-list .children .comment-author-name {
+	font-size: 13px;
+}
+
+.styled-comment-list .children .comment-text-content {
+	font-size: 12px;
+}
+
+/* Responsive for Latest Comments Widget */
+@media (max-width: 768px) {
+	.latest-comments-widget {
+		padding: 15px;
+	}
+
+	.comment-avatar-wrap img {
+		width: 45px;
+		height: 45px;
+	}
+
+	.styled-comment-list .children {
+		padding-left: 15px;
+	}
+
+	.styled-comment-list .children .comment-avatar-wrap img {
+		width: 35px;
+		height: 35px;
 	}
 }
 
@@ -7736,6 +7912,25 @@ ul.footer-social li a i {
 	margin-top: 50px;
 }
 
+.col-right {
+	margin-top: 50px;
+}
+
+/* Container for Bootstrap-style layout */
+.container {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	box-sizing: border-box;
+}
+
+.row {
+	display: block;
+	width: 100%;
+}
+
 .custom-col.col-center>* {
 	max-width: 100%;
 	margin-left: 30px;
@@ -7951,5 +8146,274 @@ ul.footer-social li a i {
 }
 
 .comments-list a:hover {
+	text-decoration: underline;
+}
+
+/*----------------------------------------(13) Pages----------------------------------------*/
+/* cột trái seacrh  */
+.custom-col.col-left {
+	width: 100%;
+	max-width: 700px;
+}
+
+.section-title {
+	color: #3b7adf;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+}
+
+.latest-post-item {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eee;
+	max-width: 100%;
+}
+
+.latest-post-title {
+	font-size: 14px;
+	color: #555;
+	margin-bottom: 8px;
+	font-weight: 500;
+}
+
+.latest-post-thumbnail img {
+	width: 100%;
+	height: auto;
+	border-radius: 4px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.latest-post-heading a {
+	color: #000;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-decoration: none;
+}
+
+.latest-post-heading a:hover {
+	color: #b70000;
+}
+
+.latest-post-excerpt {
+	color: #555;
+	font-size: 15px;
+	line-height: 1.5;
+	margin: 8px 0;
+}
+
+.latest-post-category {
+	font-size: 14px;
+	color: #888;
+}
+
+.latest-post-heading {
+	position: relative;
+
+}
+
+.latest-post-heading::before {
+	content: "";
+	position: absolute;
+	border-bottom: 2px solid #000;
+	width: 20%;
+	bottom: 0;
+	color: #a5a9b4;
+}
+
+/* end cọt trái search  */
+/*----------------------------------------end----------------------------------------*/
+/*----------------------------------------lastnews module 15----------------------------------------*/
+/* 15 last post  */
+/* --- Latest News Timeline --- */
+.latest-news-section {
+	max-width: 700px;
+	margin: 60px auto;
+	font-family: "Segoe UI", sans-serif;
+}
+
+.latest-news-title {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 40px;
+	color: #222;
+}
+
+/* Timeline container */
+.timeline {
+	position: relative;
+
+}
+
+/* Mỗi item trong timeline */
+.timeline-item {
+	position: relative;
+	margin-bottom: 40px;
+}
+
+.timeline-icon::before {
+	content: "";
+	margin-top: 12px;
+	position: absolute;
+	left: 4px;
+	top: 0;
+	height: 120px;
+	bottom: 0;
+	width: 2.5px;
+	background-color: #d4d9df;
+}
+
+
+/* Icon tròn ở line */
+.timeline-icon {
+	position: absolute;
+	left: -10px;
+	top: 5px;
+	width: 14px;
+	height: 14px;
+	border: 2px solid #24c1e8;
+	border-radius: 50%;
+	background: #fff;
+}
+
+/* Nội dung */
+.timeline-content {
+	padding-left: 10px;
+}
+
+/* Header chứa title và date */
+.timeline-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 6px;
+}
+
+/* Tiêu đề bài viết */
+.timeline-title {
+	font-size: 16px;
+	font-weight: 600;
+	color: #1976d2;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.timeline-title:hover {
+	text-decoration: underline;
+}
+
+/* Ngày tháng */
+.timeline-date {
+	font-size: 13px;
+	color: #2196f3;
+	white-space: nowrap;
+}
+
+/* Mô tả */
+.timeline-excerpt {
+	font-size: 14px;
+	color: #333;
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* Hiệu ứng nhỏ khi hover vào item */
+.timeline-item:hover .timeline-icon {
+	background: #2196f3;
+	box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+/* end 15 last port  */
+/*----------------------------------------end----------------------------------------*/
+/* Comment Item ----------------------------- */
+
+/* COMMENT HEADER */
+
+.comments .comment,
+.comments .pingback,
+.comments .trackback,
+.comments .review {
+	padding-top: 3.5rem;
+}
+
+div.comment:first-of-type {
+	margin-top: 3.5rem;
+	padding-top: 0;
+}
+
+.comments .comments-header+div {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.comment-body {
+	position: relative;
+}
+
+.comment .comment {
+	padding-left: 5%;
+}
+
+.comment-meta {
+	line-height: 1.1;
+	/*margin-bottom: 1.5rem;*/
+	min-height: 5rem;
+	padding-left: 5rem;
+	position: relative;
+}
+
+.hide-avatars .comment-meta {
+	min-height: 0;
+	padding-left: 0;
+}
+
+.comment-meta a {
+	color: inherit;
+}
+
+.comment-author {
+	font-size: 1.8rem;
+	font-weight: 700;
+	letter-spacing: -0.027777778em;
+}
+
+.comment-author a {
+	text-decoration: underline;
+}
+
+.comment-author a:hover,
+.comment-author a:focus {
+	text-decoration: none;
+}
+
+.comment-meta .avatar {
+	height: 4rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 4rem;
+}
+
+.comment-author .url {
+	text-decoration: underline;
+}
+
+.comment-metadata {
+	color: #6d6d6d;
+	font-size: 1.4rem;
+	font-weight: 500;
+	margin-top: 0.6rem;
+}
+
+.comment-metadata a {
+	text-decoration: none;
+}
+
+.comment-metadata a:focus,
+.comment-metadata a:hover {
 	text-decoration: underline;
 }
