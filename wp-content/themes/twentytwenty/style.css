@@ -2656,7 +2656,6 @@ h2.entry-title {
 
 .singular .featured-media-inner {
 	position: relative;
-	width: 100vw;
 }
 
 
@@ -2834,10 +2833,12 @@ h2.entry-title {
 	font-weight: normal;
 }
 
+/* Container chính cho single post - đảm bảo chiếm full width */
 .post-single {
-	display: flex;
-	flex-direction: column;
+	width: 100%;
+	max-width: 100%;
 	padding: 50px 0;
+	box-sizing: border-box;
 }
 
 .post-title-row {
@@ -2851,25 +2852,31 @@ h2.entry-title {
 	font-size: 25px !important;
 }
 
-/* 3-Column Layout for Single Post */
+/* 3-Column Layout for Single Post - Layout chính cho 3 cột */
 .post-layout-wrapper-3-col {
 	display: flex;
 	gap: 30px;
 	max-width: 1400px;
+	width: 100%;
 	margin: 0 auto;
 	padding: 0 20px;
+	box-sizing: border-box;
+	align-items: flex-start;
+	/* Căn các cột từ trên xuống */
 }
 
 /* Cột 1: Categories Sidebar (Bên trái) */
 .post-sidebar-categories {
 	flex: 0 0 250px;
 	max-width: 250px;
+	min-width: 250px;
+	box-sizing: border-box;
 }
 
 /* 1. CONTAINER CHUNG - Khối bao quanh */
 .all-categories-list-container {
 	/* Đảm bảo khối này không bị trôi nổi và chiếm đủ không gian */
-	width: fit-content;
+	width: 100%;
 	clear: both;
 	margin: 20px 0;
 	/* Khoảng cách trên dưới */
@@ -2959,16 +2966,22 @@ h2.entry-title {
 	font-weight: 600;
 }
 
-/* Cột 2: Content chính (Giữa) */
+/* Cột 2: Content chính (Giữa) - Chiếm phần lớn không gian */
 .post-content-main {
 	flex: 1;
 	min-width: 0;
+	max-width: 100%;
+	box-sizing: border-box;
 }
 
-/* Cột 3: Next Post Sidebar (Bên phải) */
+/* Cột 3: Recent Post Sidebar (Bên phải) */
 .post-sidebar-next {
-	flex: 0 0 250px;
-	max-width: 250px;
+	flex: 0 0 300px;
+	/* Tăng kích thước lên 300px để đủ chỗ cho nội dung */
+	max-width: 300px;
+	padding: 0;
+	/* Loại bỏ padding vì latest-news-block đã có padding riêng */
+	box-sizing: border-box;
 }
 
 .next-post-placeholder {
@@ -2981,6 +2994,163 @@ h2.entry-title {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+/*----------------------------------------recent-post----------------------------------------*/
+/* CSS cho cột thứ 3: Latest News Block (Mẫu xanh ngọc) */
+.latest-news-block {
+	background-color: #4dc4b9;
+	/* Màu xanh ngọc (Teal) */
+	padding: 30px;
+	border-radius: 8px;
+	/* Bo góc nhẹ */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	position: sticky;
+	top: 100px;
+	/* Sticky để cố định khi scroll */
+	color: #fff;
+	/* Chữ trắng */
+}
+
+/* Kiểu dáng cho từng bài viết */
+.news-item-link {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	padding: 15px 0;
+	transition: background-color 0.3s;
+}
+
+.news-item-link:last-of-type {
+	padding-bottom: 25px;
+}
+
+.news-item-link:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Bố cục của mỗi dòng bài viết (Ngày/Tháng | Tiêu đề) */
+.news-item-row {
+	display: flex;
+	align-items: flex-start;
+	/* Căn chỉnh lên trên */
+}
+
+/* Nhóm ngày tháng */
+.date-group {
+	flex-shrink: 0;
+	width: 70px;
+	text-align: left;
+	margin-right: 15px;
+	font-weight: bold;
+}
+
+/* Khối Ngày/Tháng/Năm (toàn bộ) */
+.date-info {
+	display: flex;
+	/* Giữ align-items: flex-end để Ngày/Tháng và Năm căn chỉnh từ dưới lên */
+	/* THAY ĐỔI: Chuyển về center hoặc flex-start để dễ căn chỉnh theo tiêu đề */
+	align-items: flex-start;
+	line-height: 1;
+}
+
+/* Container cho Ngày và Tháng */
+.date-d-m {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 8px;
+}
+
+/* Ngày và Tháng (khối 03 / 10) */
+/* [BỔ SUNG THEO YÊU CẦU NGƯỜI DÙNG] */
+.date-day {
+	/* Cần thêm độ dày và kiểu (solid) cho border-bottom để nó hiển thị */
+	border-bottom: 2px solid #ffffff;
+	padding-bottom: 3px;
+	margin-bottom: 3px;
+}
+
+/* Ngày và Tháng (03 và 10) */
+.date-day,
+.date-month {
+	font-size: 18px;
+	/* Tăng cỡ chữ để nổi bật hơn */
+	display: block;
+	line-height: 1.2;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* Dấu phân cách (nếu có) */
+.date-separator {
+	display: none;
+	/* Ẩn nếu không cần */
+}
+
+/* Năm (25) */
+.date-year-display {
+	margin-left: 5px;
+	font-size: 18px;
+	transform: translateY(10px);
+	/* Tinh chỉnh giá trị này */
+	align-self: flex-start;
+	/* THAY ĐỔI: Căn từ trên xuống để dễ căn với đường kẻ ngang */
+	font-weight: bold;
+}
+
+/* Tiêu đề bài viết trong Latest News Block */
+.latest-news-block .post-title {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.4;
+	flex-grow: 1;
+	color: #fff;
+}
+
+/* Override cho category-heading trong news block */
+.latest-news-block .category-heading {
+	color: #fff;
+}
+
+/* Nút Xem Tất Cả Tin Tức */
+.view-all-news-button {
+	display: block;
+	width: 100%;
+	text-align: center;
+	background-color: #38a59c;
+	/* Màu xanh đậm hơn cho nút */
+	color: #fff;
+	padding: 15px 10px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 4px;
+	margin-top: 20px;
+	transition: background-color 0.3s;
+}
+
+.view-all-news-button:hover {
+	background-color: #2e8b83;
+}
+
+/*----------------------------------------end----------------------------------------*/
+
+/* Responsive cho màn hình rộng */
+@media (min-width: 1400px) {
+	.post-layout-wrapper-3-col {
+		max-width: 1600px;
+		gap: 40px;
+	}
+
+	.post-sidebar-categories {
+		flex: 0 0 280px;
+		max-width: 280px;
+	}
+
+	.post-sidebar-next {
+		flex: 0 0 320px;
+		max-width: 320px;
+	}
 }
 
 /* Responsive cho tablet */
@@ -2997,9 +3167,25 @@ h2.entry-title {
 	}
 
 	.all-categories-list-container,
-	.next-post-placeholder {
+	.next-post-placeholder,
+	.latest-news-block {
 		position: relative;
 		top: 0;
+	}
+
+	.post-content-main {
+		order: 1;
+		/* Content hiển thị đầu tiên */
+	}
+
+	.post-sidebar-categories {
+		order: 2;
+		/* Categories hiển thị thứ 2 */
+	}
+
+	.post-sidebar-next {
+		order: 3;
+		/* Recent posts hiển thị cuối cùng */
 	}
 }
 
@@ -3012,6 +3198,21 @@ h2.entry-title {
 
 	.categories-list-header {
 		font-size: 18px;
+	}
+
+	.latest-news-block {
+		padding: 20px;
+		/* Giảm padding trên mobile */
+	}
+
+	.date-group {
+		width: 60px;
+		/* Giảm width của date group */
+	}
+
+	.post-title {
+		font-size: 14px;
+		/* Giảm font size của title */
 	}
 }
 
