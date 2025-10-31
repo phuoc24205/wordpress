@@ -8228,106 +8228,152 @@ ul.footer-social li a i {
 /* end cọt trái search  */
 /*----------------------------------------end----------------------------------------*/
 /*----------------------------------------lastnews module 15----------------------------------------*/
-/* 15 last post  */
-/* --- Latest News Timeline --- */
-.latest-news-section {
-	max-width: 700px;
-	margin: 60px auto;
-	font-family: "Segoe UI", sans-serif;
+/* 15 last post - Latest News Timeline */
+
+.latest-news-timeline {
+	max-width: 100%;
+	padding: 20px 15px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .latest-news-title {
-	font-size: 24px;
+	font-size: 22px;
 	font-weight: 700;
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 	color: #222;
 }
 
 /* Timeline container */
-.timeline {
+.timeline-container {
 	position: relative;
-
+	padding-left: 0;
 }
 
-/* Mỗi item trong timeline */
+/* Each timeline item */
 .timeline-item {
 	position: relative;
-	margin-bottom: 40px;
+	display: flex;
 }
 
-.timeline-icon::before {
-	content: "";
-	margin-top: 12px;
-	position: absolute;
-	left: 4px;
-	top: 0;
-	height: 120px;
-	bottom: 0;
-	width: 2.5px;
-	background-color: #d4d9df;
+.timeline-item:last-child .timeline-line {
+	display: none;
 }
 
+/* Timeline marker column (circle + line) */
+.timeline-marker {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 15px;
+	flex-shrink: 0;
+}
 
-/* Icon tròn ở line */
-.timeline-icon {
-	position: absolute;
-	left: -10px;
-	top: 5px;
+/* Circle marker */
+.timeline-circle {
 	width: 14px;
 	height: 14px;
-	border: 2px solid #24c1e8;
+	border: 3px solid #00bcd4;
 	border-radius: 50%;
 	background: #fff;
+	z-index: 2;
+	position: relative;
+	flex-shrink: 0;
 }
 
-/* Nội dung */
+/* Vertical line connecting circles */
+.timeline-line {
+	width: 2px;
+	flex-grow: 1;
+	height: 100%;
+	background-color: #ccc;
+	margin-top: 4px;
+	min-height: 60px;
+}
+
+/* Content area */
 .timeline-content {
-	padding-left: 10px;
+	flex: 1;
+	padding-top: 0;
 }
 
-/* Header chứa title và date */
+/* Header with title and date */
 .timeline-header {
 	display: flex;
 	justify-content: space-between;
-	align-items: baseline;
-	margin-bottom: 6px;
+	align-items: flex-start;
+	margin-bottom: 8px;
+	gap: 15px;
 }
 
-/* Tiêu đề bài viết */
-.timeline-title {
-	font-size: 16px;
+/* Post title link */
+.timeline-post-title {
+	margin: 0;
+	font-size: 15px;
 	font-weight: 600;
-	color: #1976d2;
-	text-decoration: none;
-	transition: color 0.2s;
+	line-height: 1.4;
+	flex: 1;
+	display: inline-block;
 }
 
-.timeline-title:hover {
+.timeline-post-title a {
+	color: #0288d1;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.timeline-post-title a:hover {
+	color: #01579b;
 	text-decoration: underline;
 }
 
-/* Ngày tháng */
+/* Date on the right */
 .timeline-date {
 	font-size: 13px;
-	color: #2196f3;
+	color: #0288d1;
 	white-space: nowrap;
+	flex-shrink: 0;
+	font-weight: 500;
 }
 
-/* Mô tả */
+/* Excerpt/description */
 .timeline-excerpt {
 	font-size: 14px;
-	color: #333;
+	color: #555;
 	line-height: 1.6;
 	margin: 0;
+	text-align: justify;
 }
 
-/* Hiệu ứng nhỏ khi hover vào item */
-.timeline-item:hover .timeline-icon {
-	background: #2196f3;
-	box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+/* Hover effect on circle */
+.timeline-item:hover .timeline-circle {
+	background: #00bcd4;
+	box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.2);
+	transition: all 0.3s ease;
 }
 
-/* end 15 last port  */
+/* Responsive adjustments */
+@media (max-width: 600px) {
+	.timeline-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+	}
+
+	.timeline-date {
+		font-size: 12px;
+	}
+
+	.timeline-post-title {
+		font-size: 14px;
+	}
+
+	.timeline-excerpt {
+		font-size: 13px;
+	}
+}
+
+/* end 15 last post */
 /*----------------------------------------end----------------------------------------*/
 /* Comment Item ----------------------------- */
 
