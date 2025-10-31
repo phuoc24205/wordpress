@@ -278,7 +278,10 @@ get_search_form(
 
 </main>
 <?php
-get_template_part('template-parts/template-latest-news');
+ if(is_search())
+ {
+    get_template_part('template-parts/template-latest-news');
+ }
 
 ?>
 <?php
