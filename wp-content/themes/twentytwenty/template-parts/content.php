@@ -35,7 +35,6 @@
             <span class="month">
                 <?php echo 'Tháng ' . date_i18n( 'n', strtotime( get_the_date() ) ); ?>
             </span>
-            <span class="year"><?php echo get_the_date('Y'); ?></span>
         </div>
     </div>
 		  <header class="entry-header">
