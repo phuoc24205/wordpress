@@ -109,25 +109,28 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ||
 								class Social_Walker extends Walker_Nav_Menu {
 									function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 										$url = $item->url;
-										$icon_class = 'fa fa-link'; // Default icon
-										
-										// Detect social platform from URL and assign appropriate icon
+										// Use Font Awesome 6: brands use the "fab" prefix. Use a solid link icon as fallback.
+										$icon_class = 'fas fa-link'; // Default icon (solid link)
+
+										// Detect social platform from URL and assign appropriate brand icon
 										if ( strpos( $url, 'facebook.com' ) !== false ) {
-											$icon_class = 'fa fa-facebook';
+											// facebook brand icon
+											$icon_class = 'fab fa-facebook-f';
 										} elseif ( strpos( $url, 'twitter.com' ) !== false ) {
-											$icon_class = 'fa fa-twitter';
+											$icon_class = 'fab fa-twitter';
 										} elseif ( strpos( $url, 'instagram.com' ) !== false ) {
-											$icon_class = 'fa fa-instagram';
+											$icon_class = 'fab fa-instagram';
 										} elseif ( strpos( $url, 'linkedin.com' ) !== false ) {
-											$icon_class = 'fa fa-linkedin';
+											$icon_class = 'fab fa-linkedin-in';
 										} elseif ( strpos( $url, 'youtube.com' ) !== false ) {
-											$icon_class = 'fa fa-youtube';
+											$icon_class = 'fab fa-youtube';
 										} elseif ( strpos( $url, 'github.com' ) !== false ) {
-											$icon_class = 'fa fa-github';
+											$icon_class = 'fab fa-github';
 										} elseif ( strpos( $url, 'pinterest.com' ) !== false ) {
-											$icon_class = 'fa fa-pinterest';
+											$icon_class = 'fab fa-pinterest';
 										} elseif ( strpos( $url, 'tiktok.com' ) !== false ) {
-											$icon_class = 'fa fa-music';
+											// TikTok is a brand icon in newer Font Awesome versions
+											$icon_class = 'fab fa-tiktok';
 										}
 										
 										$output .= '<li class="menu-item">';
