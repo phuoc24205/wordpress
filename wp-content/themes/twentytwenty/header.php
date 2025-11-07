@@ -150,14 +150,14 @@
 									</li>
 
 									<li class="icon-menu-item">
-										<button class="icon-link toggle search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+										<a class="icon-link" href="<?php echo esc_url( home_url( '/?s=' ) ); ?>">
 											<span class="toggle-icon">
 												<i class="fa-solid fa-search" aria-hidden="true"></i>
 											</span>
 											<span class="icon-text">
 												<?php _e( 'Search', 'twentytwenty' ); ?>
 											</span>
-										</button>
+										</a>
 									</li>
 
 									<li class="icon-menu-item icon-account dropdown">
