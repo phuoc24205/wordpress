@@ -2873,48 +2873,39 @@ h2.entry-title {
 	box-sizing: border-box;
 }
 
-/* 1. CONTAINER CHUNG - Khối bao quanh */
 .all-categories-list-container {
-	/* Đảm bảo khối này không bị trôi nổi và chiếm đủ không gian */
 	width: 100%;
 	clear: both;
 	margin: 20px 0;
-	/* Khoảng cách trên dưới */
 	padding: 0;
-	/* Loại bỏ padding để tiêu đề chiếm hết chiều rộng */
 	background-color: #ffffff;
 	border-radius: 8px;
 	overflow: hidden;
-	/* Cần thiết để tiêu đề có nền họa tiết */
 	position: sticky;
 	top: 100px;
 }
 
-/* 2. TIÊU ĐỀ "Categories" */
 .categories-list-header {
 	font-size: 2.5rem;
-	/* Kích thước chữ lớn hơn */
 	font-weight: 700;
-	/* Chữ đậm */
 	color: #333333;
 	padding: 15px 20px;
-	/* Padding bên trong */
 	margin: 0;
-	/* Loại bỏ margin mặc định của h2 */
-	border-bottom: 1px solid #e0e0e0;
-	/* Đường kẻ dưới tiêu đề */
 }
 
-/* 3. DANH SÁCH UL */
 .categories-list-ul {
-	list-style: none;
-	/* Loại bỏ bullet mặc định */
-	padding: 0 20px 10px 20px;
-	/* Padding: trên 0, hai bên 20px, dưới 10px */
-	margin: 0;
-	/* Loại bỏ margin mặc định */
+  border-top: 8px solid transparent;
+  border-image: repeating-linear-gradient(
+    -45deg,
+    #e0e0e0,
+    #e0e0e0 2px,   /* độ dày mỗi vạch */
+    transparent 2px,
+    transparent 4px /* khoảng cách ngắn hơn => nhiều vạch hơn */
+  ) 10;
+  list-style: none;
+  padding: 0 20px 10px 20px;
+  margin: 0;
 }
-
 /* 4. CÁC MỤC DANH MỤC LI */
 .categories-list-ul li {
 	padding: 10px 0;
